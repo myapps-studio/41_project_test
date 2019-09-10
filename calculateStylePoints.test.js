@@ -14,7 +14,7 @@ describe('calculateStylePoints', () => {
         it('should return sum of 3 notes v2', () => {
             const actual = calculateStylePoints(15, 18, 16.5, 17, 19);
     
-            const expected = 48.5;
+            const expected = 51.5;
     
             assert.equal(actual, expected);
         });

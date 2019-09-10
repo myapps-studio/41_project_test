@@ -1,12 +1,23 @@
 
-const calculateDistancePoints = require('./calculateDistancePoints');
-const calculateStylePoints = require('./calculateStylePoints');
+const assert = require('assert');
+const calculateTotalPoints = require('./calculateTotalPoints');
 
-const calculateTotalPoints = (distance, hillSize, kPoint, styleNotes, windFactor, gateFactor) => {
-  const distancePoints = calculateDistancePoints(distance, hillSize, kPoint);
-  const stylePoints = calculateStylePoints(styleNotes);
+describe('calculateTotalPoints', () => {
+    describe('windFactor & gateFactor', () => {
+        it('diff wind and gate factor', () => {
+            const actual = calculateTotalPoints(124, 1, 98, 10, 10, 10, 10, 10, -10, -10);
+    
+            const expected = 122;
+    
+            assert.equal(actual, expected);
+        });
 
-  return distancePoints + stylePoints + windFactor + gateFactor;
-}
-
-module.exports = calculateTotalPoints;
+        it('diff wind and gate factor', () => {
+            const actual = calculateTotalPoints(124, 1, 98, 10, 10, 10, 10, 10, 10, 10);
+    
+            const expected = 162;
+    
+            assert.equal(actual, expected);
+        });
+    });
+});
